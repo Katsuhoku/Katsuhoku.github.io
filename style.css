@@ -1,0 +1,206 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+    border-radius: 100vh;
+    padding: 10px 30px;
+    font-size: calc(10px + 1vh);
+    outline: none;
+
+    transition-duration: 0.3s;
+}
+
+button:enabled:hover {
+    background-color: coral;
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+article {
+    width: 30%;
+    background-color: rgb(135, 33, 202);
+    color: white;
+    border-radius: 50px;
+    padding: 50px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, calc(40px + 2vh));
+    gap: 1vh;
+}
+
+article h2 {
+    grid-column: span 2;
+    text-align: center;
+}
+
+article label {
+    align-self: end;
+}
+
+#product-name {
+    grid-column: span 2;
+}
+
+.container {
+    /* Size to all viewport */
+    height: 100vh;
+    width: 100vw;
+
+    /* Layout config (default: widescreen) */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: calc(70px + 0.5vh) 1fr;
+}
+
+main {
+    /* Main Layout (default: widescreen) */
+    display: grid;
+    grid-template-columns: 2.8fr 1.2fr;
+    overflow: hidden;
+}
+
+section {
+    /* Scrollbar when needed */
+    overflow-y: auto;
+    padding: 20px;
+}
+
+header, section, footer {
+    border: 2px solid black;
+    margin: 0;
+}
+
+#display_order {
+    width: 100%;
+    height: 100%;
+}
+
+#menu {
+    text-align: center;
+}
+
+#menu::-webkit-scrollbar {
+    width: 10px;
+}
+
+#menu::-webkit-scrollbar-thumb {
+    background-color: rgba(138, 179, 255, 0.712);
+    border-radius: 20px;
+}
+
+/* Product structure style in Menu Section */
+#menu .product {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+
+    text-align: start;
+    
+    background-color: aqua;
+    padding: 15px 40px;
+    border-radius: 100vh;
+    margin: 20px 0;
+
+    transition-duration: 0.3s;
+}
+
+#menu .product * {
+    margin: 0;
+}
+
+#menu .info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+#menu .name {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    font-size: calc(18px + 1vh);
+    font-weight: bolder;
+}
+
+#menu .price, #menu .type {
+    font-size: calc(12px + 1vh);
+}
+
+#menu input {
+    background-color: rgb(0, 0, 0, 0);
+    border: none;
+    max-width: 100px;
+    font-size: calc(18px + 1vh);
+    font-weight: bolder;
+    text-align: center;
+}
+
+.decrement, .increment {
+    height: calc(40px + 1vh);
+    width: calc(40px + 1vh);
+
+    font-size: calc(10px + 1.5vh);
+    font-weight: bolder;
+
+    border-radius: 100vh;
+    padding: 0;
+}
+
+.control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 20px;
+}
+
+footer {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 999px) {
+    .container {
+        grid-template-rows: calc(100px + 2vh) 1fr 100px;
+    }
+
+    article {
+        width: 70%;
+    }
+
+    main {
+        /* Two columns layout (for mobile) */
+        grid-template-columns: 1fr;
+    }
+
+    #order {
+        display: none;
+    }
+
+    footer {
+        display: block;
+    }
+}
