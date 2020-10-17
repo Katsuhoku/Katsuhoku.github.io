@@ -15,8 +15,8 @@
             <label for="product-name">Nombre</label>
             <input id="product-name" type="text">
             <label for="product-price">Precio</label>
-            <label for="product-type">Tipo</label>
             <input id="product-price" type="number">
+            <label for="product-type">Tipo</label>
             <input id="product-type" type="text">
             <button id="accept-edit" type="button">Aceptar</button>
             <button id="close-edit" type="button">Cancelar</button>
@@ -150,6 +150,52 @@
 
             <section id="order">
                 <h2>Pedido</h2>
+
+                <div class="products">
+                    <div class="product">
+                        <div class="order-info">
+                            <p class="name">Producto 1</p>
+                            <p class="quantity">1</p>
+                            <p class="type">Aperitivo</p>
+                        </div>
+
+                        <p class="subtotal">$999.999</p>
+
+                        <button id="remove-product" type="button">Quitar</button>
+                    </div>
+
+                    <div class="product">
+                        <div class="order-info">
+                            <p class="name">Producto 4</p>
+                            <p class="quantity">5</p>
+                            <p class="type">Bebida</p>
+                        </div>
+
+                        <p class="subtotal">$102.50</p>
+
+                        <button id="remove-product" type="button">Quitar</button>
+                    </div>
+
+                    <div class="product">
+                        <div class="order-info">
+                            <p class="name">Producto 6</p>
+                            <p class="quantity">1</p>
+                            <p class="type">Aperitivo</p>
+                        </div>
+
+                        <p class="subtotal">$999.999</p>
+
+                        <button id="remove-product" type="button">Quitar</button>
+                    </div>
+                </div>
+
+                <div class="confirmation">
+                    <hr>
+                    <p>Total</p>
+                    <p class="total">$99999.999</p>
+                    <br>
+                    <button type="button">Confirmar pedido</button>
+                </div>
             </section>
         </main>
         <footer>
