@@ -73,9 +73,6 @@ article label {
     height: 100vh;
     width: 100vw;
 
-    /* Size to all viewport minus browser interface */
-    height: calc(var(--vh, 1vh) * 100);
-
     /* Layout config (default: widescreen) */
     display: grid;
     grid-template-columns: 1fr;
