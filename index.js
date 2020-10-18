@@ -142,7 +142,7 @@ var addProductButtons = document.getElementsByClassName("add-to-order");
 
         // Puts the new element in the order
         var order = document.getElementById("order-products");
-        order.innerHTML += productMarkup;
+        order.insertAdjacentHTML('beforeend', productMarkup);
 
         var removeProductButton = order.lastElementChild.lastElementChild;
         console.log(removeProductButton);
