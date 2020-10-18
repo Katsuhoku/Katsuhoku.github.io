@@ -5,7 +5,7 @@
 button {
     border-radius: 100vh;
     padding: calc(5px + 0.5vh) calc(10px + 3vw);
-    font-size: calc(10px + 1vw);
+    font-size: calc(12px + 0.5vw);
     font-weight: 700;
     outline: none;
 
@@ -73,6 +73,9 @@ article label {
     height: 100vh;
     width: 100vw;
 
+    /* Size to all viewport minus browser interface */
+    height: calc(var(--vh, 1vh) * 100);
+
     /* Layout config (default: widescreen) */
     display: grid;
     grid-template-columns: 1fr;
@@ -132,9 +135,13 @@ header h1 {
     width: 5px;
 }
 
-#menu::-webkit-scrollbar-thumb, #order::-webkit-scrollbar-thumb {
-    background-color: rgba(138, 179, 255, 0.712);
+#menu::-webkit-scrollbar-thumb {
+    background-color: #dd6040;
     border-radius: 20px;
+}
+
+#order::-webkit-scrollbar-thumb {
+    background-color: white;
 }
 
 #menu h2, #order h2 {
@@ -216,6 +223,10 @@ header h1 {
 
 #add-button {
     grid-column: span 2;
+}
+
+#order {
+    background-color: #cc5141;
 }
 
 #order .product {

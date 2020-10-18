@@ -1,3 +1,9 @@
+// Resizes window avoiding browser interface crops
+window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+});
+
 // Exchanges Menu and Order sections (in mobile version)
 var menuDisplayed = true;
 var displayOrderButton = document.getElementById("display_order");
