@@ -152,6 +152,7 @@ header h1 {
 
 #order::-webkit-scrollbar-thumb {
     background-color: white;
+    border-radius: 20px;
 }
 
 #menu h2, #order h2 {

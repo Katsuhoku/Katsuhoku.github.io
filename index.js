@@ -56,9 +56,9 @@ var productList = document.getElementsByClassName("info");
             deleteButton.disabled = false;
             selected = product.id;
 
-            product.parentElement.style.backgroundColor = "greenyellow";
+            product.parentElement.style.backgroundColor = "#ffb36b";
 
-            if (previous != null) previous.parentElement.style.backgroundColor = "aqua";
+            if (previous != null) previous.parentElement.style.backgroundColor = "#f6f1f1";
 
             console.log(selected);
         }
