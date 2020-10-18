@@ -45,7 +45,7 @@ var productList = document.getElementsByClassName("info");
             deleteButton.disabled = true;
             selected = "";
 
-            product.parentElement.style.backgroundColor = "aqua";
+            product.parentElement.style.backgroundColor = "#f6f1f1";
         }
         // A product selected once, will activate buttons and deselect previous
         // selected product if exists

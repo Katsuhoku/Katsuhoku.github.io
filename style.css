@@ -1,11 +1,12 @@
 * {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto Slab', serif;
 }
 
 button {
     border-radius: 100vh;
-    padding: 10px calc(30px + 3vw);
-    font-size: calc(10px + 1vh);
+    padding: calc(5px + 0.5vh) calc(10px + 3vw);
+    font-size: calc(10px + 1vw);
+    font-weight: 700;
     outline: none;
 
     transition-duration: 0.3s;
@@ -83,6 +84,8 @@ main {
     display: grid;
     grid-template-columns: 2.8fr 1.2fr;
     overflow: hidden;
+
+    background-color: #f3ead4;
 }
 
 section {
@@ -92,7 +95,6 @@ section {
 }
 
 header, section, footer {
-    border: 2px solid black;
     margin: 0;
 }
 
@@ -100,10 +102,19 @@ header {
     display: flex;
     align-items: center;
     padding-left: calc(10px + 1vw);
+
+    background-color: #9c3636;
+    color: #f3ead4;
 }
 
 header h1 {
-    font-size: calc(1em + 2vh);
+    font-size: calc(1em + 1vw);
+}
+
+#kanji {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: calc(1.5em + 3vh);
+    margin-right: 3vw;
 }
 
 #display_order {
@@ -133,17 +144,20 @@ header h1 {
     font-size: calc(1em + 2vh);
 }
 
+
+.product {
+    padding: 15px calc(15px + 2vw);
+    border-radius: 1.5vh;
+    margin: 20px 0;
+}
 /* Product structure style in Menu Section */
-#menu .product{
+#menu .product {
     display: grid;
     grid-template-columns: 3fr 1fr 1fr;
 
     text-align: start;
     
-    background-color: aqua;
-    padding: 15px 40px;
-    border-radius: 5vh;
-    margin: 20px 0;
+    background-color: #f6f1f1;
 
     transition-duration: 0.3s;
 }
@@ -208,11 +222,8 @@ header h1 {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-
-    padding: 15px 40px;
+    
     background-color: violet;
-    border-radius: 5vh;
-    margin: 20px 0;
 }
 
 #order .product * {
