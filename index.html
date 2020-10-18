@@ -52,7 +52,7 @@
                             <button class="increment">+</button>
                         </div>
 
-                        <button class="add_to_order" disabled>Añadir</button>
+                        <button class="add-to-order" disabled>Añadir</button>
                     </div>
 
                     <div class="product">
@@ -70,7 +70,7 @@
                             <button class="increment">+</button>
                         </div>
 
-                        <button class="add_to_order" disabled>Añadir</button>
+                        <button class="add-to-order" disabled>Añadir</button>
                     </div>
 
                     <div class="product">
@@ -88,7 +88,7 @@
                             <button class="increment">+</button>
                         </div>
 
-                        <button class="add_to_order" disabled>Añadir</button>
+                        <button class="add-to-order" disabled>Añadir</button>
                     </div>
 
                     <div class="product">
@@ -106,7 +106,7 @@
                             <button class="increment">+</button>
                         </div>
 
-                        <button class="add_to_order" disabled>Añadir</button>
+                        <button class="add-to-order" disabled>Añadir</button>
                     </div>
 
                     <div class="product">
@@ -124,7 +124,7 @@
                             <button class="increment">+</button>
                         </div>
 
-                        <button class="add_to_order" disabled>Añadir</button>
+                        <button class="add-to-order" disabled>Añadir</button>
                     </div>
 
                     <div class="product">
@@ -142,7 +142,7 @@
                             <button class="increment">+</button>
                         </div>
 
-                        <button class="add_to_order" disabled>Añadir</button>
+                        <button class="add-to-order" disabled>Añadir</button>
                     </div>
                 </div>
 
@@ -156,50 +156,14 @@
             <section id="order">
                 <h2>Pedido</h2>
 
-                <div class="products">
-                    <div class="product">
-                        <div class="order-info">
-                            <p class="name">Producto 1</p>
-                            <p class="quantity">1</p>
-                            <p class="type">Aperitivo</p>
-                        </div>
-
-                        <p class="subtotal">$999.999</p>
-
-                        <button id="remove-product" type="button">Quitar</button>
-                    </div>
-
-                    <div class="product">
-                        <div class="order-info">
-                            <p class="name">Producto 4</p>
-                            <p class="quantity">5</p>
-                            <p class="type">Bebida</p>
-                        </div>
-
-                        <p class="subtotal">$102.50</p>
-
-                        <button id="remove-product" type="button">Quitar</button>
-                    </div>
-
-                    <div class="product">
-                        <div class="order-info">
-                            <p class="name">Producto 6</p>
-                            <p class="quantity">1</p>
-                            <p class="type">Aperitivo</p>
-                        </div>
-
-                        <p class="subtotal">$999.999</p>
-
-                        <button id="remove-product" type="button">Quitar</button>
-                    </div>
-                </div>
+                <div id="order-products" class="products"></div>
 
                 <div class="confirmation">
                     <hr>
                     <p>Total</p>
-                    <p class="total">$99999.999</p>
+                    <p id="total">$0.0</p>
                     <br>
-                    <button type="button">Confirmar pedido</button>
+                    <button id="confirm-order" type="button" disabled>Confirmar pedido</button>
                 </div>
             </section>
         </main>

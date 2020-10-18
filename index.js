@@ -1,9 +1,3 @@
-// Resizes window avoiding browser interface crops
-window.addEventListener('resize', () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`)
-});
-
 // Exchanges Menu and Order sections (in mobile version)
 var menuDisplayed = true;
 var displayOrderButton = document.getElementById("display_order");
@@ -100,6 +94,72 @@ var decrementButtons = document.getElementsByClassName("decrement");
     };
 });
 
+// Adds an element to the order
+var addProductButtons = document.getElementsByClassName("add-to-order");
+[...addProductButtons].forEach(addProductButton => {
+    addProductButton.onclick = () => {
+        var product = {};
+        var name;
+        var type;
+        var price;
+        var quantity;
+
+        // Obtains product information
+        var info = addProductButton.previousElementSibling.previousElementSibling;
+        [...info.childNodes].forEach(child => {
+            if (child.nodeType == 1) {
+                if (child.classList.contains("name")) product["name"] = child.innerHTML;
+                if (child.classList.contains("type")) product["type"] = child.innerHTML;
+                if (child.classList.contains("price")) product["price"] = child.innerHTML.substring(1);
+            }
+        });
+
+        // Obtains desired quantity
+        var control = addProductButton.previousElementSibling;
+        [...control.childNodes].forEach(child => {
+            if (child.nodeType != 3) {
+                if (child.classList.contains("quantity")) product["quantity"] = child.value;
+            }
+        });
+
+        // Gets the final price
+        product["totalPrice"] = product.price * product.quantity;
+
+        // Generates the HTML element
+        const productMarkup = `
+            <div class="product">
+                <div class="order-info">
+                    <p class="name">${product.name}</p>
+                    <p class="quantity">${product.quantity}</p>
+                    <p class="type">${product.type}</p>
+                </div>
+
+                <p class="subtotal">$${product.totalPrice.toFixed(2)}</p>
+
+                <button class="remove-product" type="button">Quitar</button>
+            </div>
+        `;
+
+        // Puts the new element in the order
+        var order = document.getElementById("order-products");
+        order.innerHTML += productMarkup;
+
+        var removeProductButton = order.lastElementChild.lastElementChild;
+        console.log(removeProductButton);
+        removeProductButton.onclick = removeProductEvent;
+
+        // Recalculates total import
+        var totalTag = document.getElementById("total");
+        var total = parseFloat(totalTag.innerHTML.substring(1));
+        total += parseFloat(product.totalPrice);
+        totalTag.innerHTML = "$" + total.toFixed(2);
+
+        // Activates the order confirmation button
+        var confirmOrderButton = document.getElementById("confirm-order");
+        confirmOrderButton.disabled = false;
+    };
+});
+
 // Shows edit product information panel
 var editButton = document.getElementById("edit-button");
 editButton.onclick = () => {
@@ -127,3 +187,24 @@ closeEditButton.onclick = () => {
     var overlay = document.getElementById("edit-overlay");
     overlay.classList.add("hidden");
 };
+
+function removeProductEvent() {
+    /* Recalculate total import */
+    var totalTag = document.getElementById("total");
+    var total = parseFloat(totalTag.innerHTML.substring(1));
+    var productPrice = parseFloat(this.previousElementSibling.innerHTML.substring(1));
+    total -= productPrice;
+
+    totalTag.innerHTML = "$" + total.toFixed(2);
+
+    // Deletes product from order
+    var product = this.parentElement;
+    var orderProducts = product.parentElement;
+    orderProducts.removeChild(product);
+
+    // If there's no more products in the order, disables the order confirmation button
+    if (orderProducts.childElementCount == 0) {
+        var confirmOrderButton = document.getElementById("confirm-order");
+        confirmOrderButton.disabled = true;
+    }
+}

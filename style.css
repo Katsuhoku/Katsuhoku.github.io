@@ -3,17 +3,30 @@
 }
 
 button {
+    border: 5px double #cc5141;
     border-radius: 100vh;
     padding: calc(5px + 0.5vh) calc(10px + 3vw);
     font-size: calc(12px + 0.5vw);
     font-weight: 700;
     outline: none;
+    color: #b30b0b;
+    background-color: #ffffff;
+}
 
+button:enabled {
     transition-duration: 0.3s;
 }
 
 button:enabled:hover {
-    background-color: coral;
+    background-color: #b30b0b;
+    border: 5px double #ffffff;
+    color: #ffffff;
+}
+
+button:disabled {
+    color: #dbc2a1;
+    border: 5px double #c39e80;
+    transition-duration: 0.3s;
 }
 
 body {
@@ -153,6 +166,9 @@ header h1 {
     padding: 15px calc(15px + 2vw);
     border-radius: 1.5vh;
     margin: 20px 0;
+    background-color: #f6f1f1;
+
+    color: #2a3d57;
 }
 /* Product structure style in Menu Section */
 #menu .product {
@@ -160,8 +176,6 @@ header h1 {
     grid-template-columns: 3fr 1fr 1fr;
 
     text-align: start;
-    
-    background-color: #f6f1f1;
 
     transition-duration: 0.3s;
 }
@@ -226,12 +240,14 @@ header h1 {
     background-color: #cc5141;
 }
 
+#order h2 {
+    color: #ffffff
+}
+
 #order .product {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    
-    background-color: violet;
 }
 
 #order .product * {
@@ -265,8 +281,25 @@ header h1 {
     font-weight: bolder;
 }
 
+#confirm-order {
+    font-size: 1.2em;
+    border: 5px double #ffd152;
+    color: #bd8e0e;
+}
+
+#confirm-order:enabled:hover {
+    border: 5px double #ffffff;
+    background-color: #ffd152;
+    color: #ffffff;
+}
+
+#confirm-order:disabled {
+    color: #f8e09d;
+}
+
 .confirmation {
     text-align: center;
+    color: #ffffff;
 }
 
 .confirmation p {
@@ -277,6 +310,10 @@ header h1 {
 
 footer {
     display: none;
+}
+
+br {
+    border: 3px solid white;
 }
 
 .hidden {
