@@ -132,38 +132,52 @@ var addProductButtons = document.getElementsByClassName("add-to-order");
         // Gets the final price
         product["totalPrice"] = product.price * product.quantity;
 
-        // Generates the HTML element
-        const productMarkup = `
-            <div class="product">
-                <div class="order-info">
-                    <p class="name">${product.name}</p>
-                    <p class="quantity">${product.quantity}</p>
-                    <p class="type">${product.type}</p>
+        // Verifies existence of this product in the order
+        var orderedID = addProductButton.previousElementSibling.previousElementSibling.id;
+        var orderedProduct = document.getElementsByClassName(orderedID);
+        console.log(orderedProduct.length);
+        if (orderedProduct.length == 1) {
+            // The product was already ordered. Only total price and quantity will be
+            // modified
+            var orderedQuantity = orderedProduct[0].firstElementChild.nextElementSibling;
+            var orderedPrice = orderedProduct[0].nextElementSibling;
+
+            orderedQuantity.innerHTML = parseInt(orderedQuantity.innerHTML) + parseInt(product.quantity);
+            orderedPrice.innerHTML = "$" + (parseFloat(orderedPrice.innerHTML.substring(1)) + product.totalPrice).toFixed(2);
+        }
+        else {
+            // Generates the HTML element
+            const productMarkup = `
+                <div class="product">
+                    <div class="order-info ${orderedID}">
+                        <p class="name">${product.name}</p>
+                        <p class="quantity">${product.quantity}</p>
+                        <p class="type">${product.type}</p>
+                    </div>
+
+                    <p class="subtotal">$${product.totalPrice.toFixed(2)}</p>
+
+                    <button class="remove-product" type="button">Quitar</button>
                 </div>
+            `;
 
-                <p class="subtotal">$${product.totalPrice.toFixed(2)}</p>
+            // Puts the new element in the order
+            var order = document.getElementById("order-products");
+            order.insertAdjacentHTML('beforeend', productMarkup);
 
-                <button class="remove-product" type="button">Quitar</button>
-            </div>
-        `;
+            var removeProductButton = order.lastElementChild.lastElementChild;
+            console.log(removeProductButton);
+            removeProductButton.onclick = removeProductEvent;
 
-        // Puts the new element in the order
-        var order = document.getElementById("order-products");
-        order.insertAdjacentHTML('beforeend', productMarkup);
-
-        var removeProductButton = order.lastElementChild.lastElementChild;
-        console.log(removeProductButton);
-        removeProductButton.onclick = removeProductEvent;
-
+            // Activates the order confirmation button
+            var confirmOrderButton = document.getElementById("confirm-order");
+            confirmOrderButton.disabled = false;
+        }
         // Recalculates total import
         var totalTag = document.getElementById("total");
         var total = parseFloat(totalTag.innerHTML.substring(1));
         total += parseFloat(product.totalPrice);
         totalTag.innerHTML = "$" + total.toFixed(2);
-
-        // Activates the order confirmation button
-        var confirmOrderButton = document.getElementById("confirm-order");
-        confirmOrderButton.disabled = false;
     };
 });
 
@@ -209,6 +223,55 @@ closeEditButton.onclick = () => {
     var overlay = document.getElementById("edit-overlay");
     overlay.classList.add("hidden");
 };
+
+// Updates the info for a product when the edit product form is submited
+var editForm = document.getElementById("edit-form");
+editForm.onsubmit = e => {
+    e.preventDefault();
+
+    // Takes the new info from the form
+    var types = document.getElementById("product-type");
+    var newInfo = [
+        document.getElementById("product-name").value,
+        "$" + parseFloat(document.getElementById("product-price").value).toFixed(2),
+        types.options[types.selectedIndex].value
+    ];
+    
+    // Puts the new info in its product card
+    var infoIter = document.getElementById(selected).firstElementChild;
+    for (var i = 0; i < 3; i++, infoIter = infoIter.nextElementSibling) {
+        infoIter.innerHTML = newInfo[i];
+    }
+
+    // Verifies existence of this product in the order
+    var orderedProduct = document.getElementsByClassName(selected);
+    console.log(orderedProduct.length);
+    if (orderedProduct.length == 1) {
+        // The product was already ordered. Info will be changed
+        var orderedName = orderedProduct[0].firstElementChild;
+        var orderedQuantity = orderedProduct[0].firstElementChild.nextElementSibling;
+        var orderedType = orderedProduct[0].firstElementChild.nextElementSibling.nextElementSibling;
+        var orderedPrice = orderedProduct[0].nextElementSibling;
+
+        // Recalculates total import
+        var totalTag = document.getElementById("total");
+        var total = parseFloat(totalTag.innerHTML.substring(1));
+        total -= parseFloat(orderedPrice.innerHTML.substring(1));
+
+        orderedName.innerHTML = newInfo[0];
+        orderedType.innerHTML = newInfo[2];
+        console.log(parseFloat(newInfo[1].substring(1)));
+        orderedPrice.innerHTML = "$" + (parseFloat(newInfo[1].substring(1)) * parseInt(orderedQuantity.innerHTML)).toFixed(2);
+
+        
+        total += parseFloat(orderedPrice.innerHTML.substring(1));
+        totalTag.innerHTML = "$" + total.toFixed(2);
+    }
+
+    // Hides edit product card
+    var overlay = document.getElementById("edit-overlay");
+    overlay.classList.add("hidden");
+}
 
 function removeProductEvent() {
     /* Recalculate total import */

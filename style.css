@@ -192,6 +192,8 @@ header h1 {
     background-color: #f6f1f1;
 
     color: #2a3d57;
+
+    max-height: 200px;
 }
 /* Product structure style in Menu Section */
 #menu .product {
