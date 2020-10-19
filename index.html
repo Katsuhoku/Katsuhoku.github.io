@@ -1,3 +1,14 @@
+<!-- 
+    Benemérita Universidad Autónoma de Puebla
+    Facultad de Ciencias de la Computación
+    Desarrollo de Aplicaciones Web
+
+    Examen 1: Front-End de aplicación para restaurante
+
+    Marco Antonio Coria Rios (201734576)
+    Otoño 2020
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +28,13 @@
         <article id="edit-product">
             <form id="edit-form">
                 <h2 id="edit-title">Editar Producto</h2>
+
                 <label for="product-name">Nombre</label>
                 <input id="product-name" type="text" required>
+
                 <label for="product-price">Precio</label>
                 <input id="product-price" type="number" step="any" min="0" required>
+
                 <label for="product-type">Tipo</label>
                 <select id="product-type" name="product-type" required>
                     <option value="Aperitivo">Aperitivo</option>
@@ -28,6 +42,7 @@
                     <option value="Postre">Postre</option>
                     <option value="Bebida">Bebida</option>
                 </select>
+
                 <button id="accept-edit" type="submit">Aceptar</button>
                 <button id="close-edit" type="button">Cancelar</button>
             </form>
@@ -47,8 +62,8 @@
                     <div class="product">
                         <!-- Product info -->
                         <div class="info" id="p1">
-                            <p class="name">Producto 1</p>
-                            <p class="price">$999.999</p>
+                            <p class="name">Brocheta de Pollo y Champiñones</p>
+                            <p class="price">$50.00</p>
                             <p class="type">Aperitivo</p>
                         </div>
 
@@ -65,9 +80,9 @@
                     <div class="product">
                         <!-- Product info -->
                         <div class="info" id="p2">
-                            <p class="name">Producto 2</p>
-                            <p class="price">$99.999</p>
-                            <p class="type">Postre</p>
+                            <p class="name">Huevo Frito Teyvat</p>
+                            <p class="price">$35.00</p>
+                            <p class="type">Aperitivo</p>
                         </div>
 
                         <!-- Product control -->
@@ -83,8 +98,8 @@
                     <div class="product">
                         <!-- Product info -->
                         <div class="info" id="p3">
-                            <p class="name">Producto 3</p>
-                            <p class="price">$9999.999</p>
+                            <p class="name">Matsutake Salteado</p>
+                            <p class="price">$60.00</p>
                             <p class="type">Plato Fuerte</p>
                         </div>
 
@@ -101,9 +116,9 @@
                     <div class="product">
                         <!-- Product info -->
                         <div class="info" id="p4">
-                            <p class="name">Producto 4</p>
-                            <p class="price">$20.50</p>
-                            <p class="type">Bebida</p>
+                            <p class="name">Pescado a la Parrilla Mondstadt</p>
+                            <p class="price">$55.00</p>
+                            <p class="type">Plato Fuerte</p>
                         </div>
 
                         <!-- Product control -->
@@ -119,9 +134,9 @@
                     <div class="product">
                         <!-- Product info -->
                         <div class="info" id="p5">
-                            <p class="name">Producto 5</p>
-                            <p class="price">$999.999</p>
-                            <p class="type">Aperitivo</p>
+                            <p class="name">Pizza de Champiñones</p>
+                            <p class="price">$145.00</p>
+                            <p class="type">Plato Fuerte</p>
                         </div>
 
                         <!-- Product control -->
@@ -137,9 +152,81 @@
                     <div class="product">
                         <!-- Product info -->
                         <div class="info" id="p6">
-                            <p class="name">Producto 6</p>
-                            <p class="price">$999.999</p>
-                            <p class="type">Aperitivo</p>
+                            <p class="name">Pollo con Chile Jueyun</p>
+                            <p class="price">$85.00</p>
+                            <p class="type">Plato Fuerte</p>
+                        </div>
+
+                        <!-- Product control -->
+                        <div class="control">
+                            <button class="decrement">-</button>
+                            <input type="text" class="quantity" disabled value="0">
+                            <button class="increment">+</button>
+                        </div>
+
+                        <button class="add-to-order" disabled>Añadir</button>
+                    </div>
+
+                    <div class="product">
+                        <!-- Product info -->
+                        <div class="info" id="p7">
+                            <p class="name">Tofu de Almendras</p>
+                            <p class="price">$48.00</p>
+                            <p class="type">Postre</p>
+                        </div>
+
+                        <!-- Product control -->
+                        <div class="control">
+                            <button class="decrement">-</button>
+                            <input type="text" class="quantity" disabled value="0">
+                            <button class="increment">+</button>
+                        </div>
+
+                        <button class="add-to-order" disabled>Añadir</button>
+                    </div>
+
+                    <div class="product">
+                        <!-- Product info -->
+                        <div class="info" id="p8">
+                            <p class="name">Brocheta Afrutada</p>
+                            <p class="price">$32.00</p>
+                            <p class="type">Postre</p>
+                        </div>
+
+                        <!-- Product control -->
+                        <div class="control">
+                            <button class="decrement">-</button>
+                            <input type="text" class="quantity" disabled value="0">
+                            <button class="increment">+</button>
+                        </div>
+
+                        <button class="add-to-order" disabled>Añadir</button>
+                    </div>
+
+                    <div class="product">
+                        <!-- Product info -->
+                        <div class="info" id="p9">
+                            <p class="name">Soda de Litchi Elemental</p>
+                            <p class="price">$24.00</p>
+                            <p class="type">Bebida</p>
+                        </div>
+
+                        <!-- Product control -->
+                        <div class="control">
+                            <button class="decrement">-</button>
+                            <input type="text" class="quantity" disabled value="0">
+                            <button class="increment">+</button>
+                        </div>
+
+                        <button class="add-to-order" disabled>Añadir</button>
+                    </div>
+
+                    <div class="product">
+                        <!-- Product info -->
+                        <div class="info" id="p6">
+                            <p class="name">Un Paseo por Liyue</p>
+                            <p class="price">$45.00</p>
+                            <p class="type">Bebida</p>
                         </div>
 
                         <!-- Product control -->
@@ -154,7 +241,7 @@
                 </div>
 
                 <div class="products_config">
-                    <button id="add-button" type="button">Agregar</button>
+                    <button id="create-button" type="button">Nuevo</button>
                     <button id="edit-button" type="button" disabled>Modificar</button>
                     <button id="delete-button" type="button" disabled>Eliminar</button>
                 </div>
