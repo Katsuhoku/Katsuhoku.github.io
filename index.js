@@ -273,6 +273,35 @@ editForm.onsubmit = e => {
     overlay.classList.add("hidden");
 }
 
+// Deletes a product from menu
+var deleteProductButton = document.getElementById("delete-button");
+deleteProductButton.onclick = () => {
+    var menuProducts = document.getElementById("menu-products");
+    var toDeleteProduct = document.getElementById(selected).parentElement;
+
+    menuProducts.removeChild(toDeleteProduct);
+
+    // Verifies if product was already in the order
+    var orderedProduct = document.getElementsByClassName(selected);
+    if (orderedProduct.length == 1) {
+        /* Recalculate total import */
+        var totalTag = document.getElementById("total");
+        var total = parseFloat(totalTag.innerHTML.substring(1));
+        var productPrice = parseFloat(orderedProduct[0].nextElementSibling.innerHTML.substring(1));
+        total -= productPrice;
+        totalTag.innerHTML = "$" + total;
+
+        var orderProducts = document.getElementById("order-products");
+        orderProducts.removeChild(orderedProduct[0].parentElement);
+    }
+
+    // Resets environment
+    var editButton = document.getElementById("edit-button");
+    editButton.disabled = true;
+    deleteProductButton.disabled = true;
+    selected = "";
+};
+
 function removeProductEvent() {
     /* Recalculate total import */
     var totalTag = document.getElementById("total");
