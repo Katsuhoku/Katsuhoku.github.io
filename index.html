@@ -15,15 +15,22 @@
 <body>
     <div id="edit-overlay" class="overlay hidden">
         <article id="edit-product">
-            <h2>Editar Producto</h2>
-            <label for="product-name">Nombre</label>
-            <input id="product-name" type="text">
-            <label for="product-price">Precio</label>
-            <input id="product-price" type="number">
-            <label for="product-type">Tipo</label>
-            <input id="product-type" type="text">
-            <button id="accept-edit" type="button">Aceptar</button>
-            <button id="close-edit" type="button">Cancelar</button>
+            <form>
+                <h2 id="edit-title">Editar Producto</h2>
+                <label for="product-name">Nombre</label>
+                <input id="product-name" type="text" required>
+                <label for="product-price">Precio</label>
+                <input id="product-price" type="number" step="any" min="0" required>
+                <label for="product-type">Tipo</label>
+                <select id="product-type" name="product-type" required>
+                    <option value="Aperitivo">Aperitivo</option>
+                    <option value="Plato Fuerte">Plato Fuerte</option>
+                    <option value="Postre">Postre</option>
+                    <option value="Bebida">Bebida</option>
+                </select>
+                <button id="accept-edit" type="submit">Aceptar</button>
+                <button id="close-edit" type="button">Cancelar</button>
+            </form>
         </article>
     </div>
     <div class="container">
@@ -78,7 +85,7 @@
                         <div class="info" id="p3">
                             <p class="name">Producto 3</p>
                             <p class="price">$9999.999</p>
-                            <p class="type">Plato fuerte</p>
+                            <p class="type">Plato Fuerte</p>
                         </div>
 
                         <!-- Product control -->
@@ -168,7 +175,7 @@
             </section>
         </main>
         <footer>
-            <button id="display_order" type="button">Ver Pedido</button>
+            <button id="display_order" type="button">Pedido</button>
         </footer>
     </div>
 </body>

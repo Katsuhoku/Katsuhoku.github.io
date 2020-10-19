@@ -1,3 +1,6 @@
+// Total income from orders
+if (localStorage.income == null) localStorage.setItem('income', 0.0);
+
 // Exchanges Menu and Order sections (in mobile version)
 var menuDisplayed = true;
 var displayOrderButton = document.getElementById("display_order");
@@ -9,11 +12,15 @@ displayOrderButton.onclick = () => {
         menuDisplayed = false;
         menuSection.style.display = "none";
         orderSection.style.display = "block";
+
+        displayOrderButton.innerHTML = "Carta";
     }
     else {
         menuDisplayed = true;
         menuSection.style.display = "block";
         orderSection.style.display = "none";
+
+        displayOrderButton.innerHTML = "Pedido";
     }
 }
 
@@ -160,6 +167,21 @@ var addProductButtons = document.getElementsByClassName("add-to-order");
     };
 });
 
+// Confirms the order
+var confirmOrderButton = document.getElementById("confirm-order");
+confirmOrderButton.onclick = () => {
+    var orderProducts = document.getElementById("order-products");
+    orderProducts.innerHTML = ""; // Deletes all products
+
+    var orderIncome = parseFloat(document.getElementById("total").innerHTML.substring(1));
+    localStorage.setItem('income', parseFloat(localStorage.income) + orderIncome);
+
+    document.getElementById("total").innerHTML = "$0.0";
+    confirmOrderButton.disabled = true;
+
+    alert(localStorage.income);
+}
+
 // Shows edit product information panel
 var editButton = document.getElementById("edit-button");
 editButton.onclick = () => {
@@ -173,7 +195,7 @@ editButton.onclick = () => {
             var productType = document.getElementById("product-type");
 
             if (info.classList.contains("name")) productName.value = info.innerHTML;
-            if (info.classList.contains("price")) productPrice.value = info.innerHTML.substring;
+            if (info.classList.contains("price")) productPrice.value = info.innerHTML.substring(1);
             if (info.classList.contains("type")) productType.value = info.innerHTML;
         }
     });
