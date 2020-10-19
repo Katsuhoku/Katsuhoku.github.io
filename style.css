@@ -257,7 +257,7 @@ header h1 {
     padding: 0 20px;
 }
 
-#add-button {
+#create-button {
     grid-column: span 2;
 }
 
