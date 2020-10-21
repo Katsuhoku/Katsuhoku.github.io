@@ -92,6 +92,11 @@ confirmOrderButton.onclick = () => {
 
 // For control in edit information card
 var editing = false;
+
+/*
+    THIS CAN'T BE DONE IN THIS WAY. IDs WOULD BE REUTILIZED, AND GENERATE DUPLICATES.
+    ID COUNT MUST BE LOCATED IN THE BACK-END PROCESSING. THIS IS ONLY FOR TESTING PURSPOSES.
+*/
 var idCount = document.getElementById("menu-products").childElementCount;
 
 // Shows edit product information card for adding new product to menu
