@@ -368,7 +368,7 @@ br {
     }
 
     main {
-        /* Two columns layout (for mobile) */
+        /* One column layout (for mobile) */
         grid-template-columns: 1fr;
     }
 
