@@ -261,7 +261,9 @@ deleteProductButton.onclick = () => {
 
     // Resets environment
     var editButton = document.getElementById("edit-button");
+    var confirmOrderButton = document.getElementById("confirm-order");
     editButton.disabled = true;
+    confirmOrderButton.disabled = true;
     deleteProductButton.disabled = true;
     selected = "";
 };
