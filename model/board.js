@@ -1,0 +1,1 @@
+// Estado del tablero, nodos del árbol
